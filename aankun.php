@@ -9,8 +9,8 @@ Author URI: http://aan.dudut.com/
 */
 
 if (!class_exists('SimplePie')){
-	include_once('simplePie/create.php');
-	include_once('simplePie/idn/idna_convert.class.php');
+	include_once('inc/create.php');
+	include_once('inc/idn/idna_convert.class.php');
 }
 
 
