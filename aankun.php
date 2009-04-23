@@ -8,22 +8,6 @@ Author: aankun
 Author URI: http://aan.dudut.com/
 */
 
-add_option('useLightbox', '0');
-add_option('thumbSize'  , '1');
-add_option('maxSize'    , '640');
-add_option('tagFirst'   , '<ul class="myPicasawebAlbum">');
-add_option('tagLast'    , '</ul>');
-add_option('tagBegin'   , '<li>');
-add_option('tagEnd'     , '</li>');
-
-/* options page */
-$options_page = get_option('siteurl') . '/wp-admin/admin.php?page=myPicasaWebAlbum/options.php';
-/* Adds our admin options under "Options" */
-function myOptionPage() {
-	add_options_page('my Picasaweb Album Options', 'my Picasaweb Album', 10, 'myPicasaWebAlbum/options.php');
-}
-
-
 if (!class_exists('SimplePie')){
 	include_once('simplePie/create.php');
 	include_once('simplePie/idn/idna_convert.class.php');
@@ -92,17 +76,12 @@ function findAlbum($usrname,$albumName){
 }
 
 function myPicasa($atts){
-	extract(shortcode_atts(array('usrname' => '', 'album' => '', 'thumb' => '', 'maxsize' => '', 'lbox' => '', 'tagop' => '', 'edtag' => '', 'op' => '', 'ed' => '',), $atts));
-	
-	if($thumb=='')   {$thumb=get_option('thumbSize');}
-	if($maxsize=='') {$maxsize=get_option('maxSize');}
-	if($lbox=='')    {$lbox=get_option('useLightbox');}
-	if($tagop=='')   {$tagop=get_option('tagFirst');}
-	if($edtag=='')   {$edtag=get_option('tagLast');}
-	if($op=='')      {$op=get_option('tagBegin');}
-	if($ed=='')      {$ed=get_option('tagEnd');}
-
-	if($lbox=='1'){	$lightbox = true; }else if($lbox=='0'){ $lightbox = false;}
+	extract(shortcode_atts(array('usrname' => '', 'album' => '', 'thumb' => '1', 'maxsize' => '640', 'lbox' => '0', 'tagop' => '<ul class="myPicasawebAlbum">', 'edtag' => '</ul>', 'op' => '<li>', 'ed' => '</li>',), $atts));
+	if($lbox=='1'){
+		$lightbox = true;
+	}else{
+		$lightbox = false;
+	}
 	
 	getAlbumContent($usrname,$album,$thumb,$maxsize,$tagop,$edtag,$op,$ed,$lightbox);
 }
@@ -111,5 +90,4 @@ if (!is_admin()) {
 	add_shortcode('myPicasaAlbum', 'myPicasa');
 }
 
-add_action('admin_menu', 'myOptionPage');
 ?>
