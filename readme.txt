@@ -3,7 +3,7 @@ Contributors: Andi Darmika
 Tags: picasaweb, photo, picasa
 Requires at least: 1.5
 Tested up to: 2.7.1
-Stable tag: 1.2
+Stable tag: 1.3
 
 == Description ==
 
@@ -38,6 +38,9 @@ Just like the other plugin. Put the extracted files to your plugin directory an 
 
 
 == Changelog ==
+
+**1.3** - Bug Fix
+- the option page could no be opened
 
 **1.2** - Minor Update
 - Added option page
