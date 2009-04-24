@@ -3,7 +3,7 @@
 Plugin Name: my Picasaweb Album
 Plugin URI: http://aan.dudut.com/
 Description: my very first wordpress plugin for adding the content of your Picasaweb Album with a simple line of code on your posts. this plugin use simplePie (already included)
-Version: 1.2
+Version: 1.3
 Author: aankun
 Author URI: http://aan.dudut.com/
 */
