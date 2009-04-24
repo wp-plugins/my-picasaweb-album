@@ -20,10 +20,10 @@ add_option('tagEnd'     , '</li>');
 
 
 /* options page */
-$options_page = get_option('siteurl') . '/wp-admin/admin.php?page=myPicasaWebAlbum/options.php';
+$options_page = get_option('siteurl') . '/wp-admin/options-general.php?page=my-picasaweb-album/options.php';
 /* Adds our admin options under "Options" */
 function myOptionPage() {
-	add_options_page('my Picasaweb Album Options', 'my Picasaweb Album', 10, 'myPicasaWebAlbum/options.php');
+	add_options_page('my Picasaweb Album Options', 'my Picasaweb Album', 10, 'my-picasaweb-album/options.php');
 }
 
 
