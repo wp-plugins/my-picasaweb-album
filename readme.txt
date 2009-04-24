@@ -3,7 +3,7 @@ Contributors: Andi Darmika
 Tags: picasaweb, photo, picasa
 Requires at least: 1.5
 Tested up to: 2.7.1
-Stable tag: 1.1
+Stable tag: 1.2
 
 == Description ==
 
@@ -13,14 +13,33 @@ If you want to ast something about this plugin just visit <a href="http://aan.du
 
 == Installation ==
 
-Just like the other plugin. Put the extracted files to your plugin directory an then activate it. Since this is the first release, there are no option page yet (still working on it). And if you like this plugin you can buy me dinner :D or just rate it for now.
+Just like the other plugin. Put the extracted files to your plugin directory an then activate it. Option Page now available but not prefcted yet. And if you like this plugin you can buy me dinner :D or just rate it for now.
 
-== How To Use ==
+== Usage ==
 
-to use it just add (remove the ” from myPicasaAlbum)
-<small>
-["myPicasaAlbum" usrname="usr" album="album" thumb="0" maxsize="720" lbox="1"]
-thumb : the size of thumbnail (value can be 0,1 or 2)
-maxsize : the target image size ( 800, 720, 640, 576, 512, 400, 320, 288 or 200)
-lbox : use 1 if you use lightbox and use 0 of you don want to.
-</small>
+to use it just add the code below
+
+[myPicasaAlbum album="album"]
+
+
+Alternatively you can use more paramater like below to use spesific setting
+
+[myPicasaAlbum album="album" thumb="x" maxsize="x" lbox="1/0"]
+
+<strong>thumb</strong> 
+the size of thumbnail (value can be 32, 48, 64, 72, 144, 160)
+
+<strong>maxsize</strong>
+the target image size ( 800, 720, 640, 576, 512, 400, 320, 288 or 200)
+
+<strong>lbox</strong> 
+use 1 if you use lightbox and use 0 of you don want to.
+
+== Changelog ==
+
+**1.2** - Minor Update
+- Added option page
+- Now user add their username on option page
+- Added more thumbnail size and cropping on option page
+- Simplepie cache now enable
+- For those who understand HTML now you can modify before and after tag on option page.
