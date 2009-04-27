@@ -69,6 +69,6 @@ function my_add_media_button(){
 	$iFrameAdd = "$pluginURI/viewer.php?yourUrl=$pluginURI&siteUrl=$siteUrl";
 	$addParam  = "&usrname=$usrname&thumb=$thumb&maxsize=$maxsize&lbox=$lbox&isCroped=$isCroped&theTags=$theTags";
 
-	echo "<a href=\"#\"  onclick=\"tb_show('myPicasawebAlbum', '$iFrameAdd$addParam', false)\" >zzz</a>";
+	echo "<a href=\"#\"  onclick=\"tb_show('myPicasawebAlbum', '$iFrameAdd$addParam', false)\" >Pic</a>";
 }
 ?>
