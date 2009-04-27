@@ -7,6 +7,7 @@
 		update_option('thumbSize',   $_POST['thumbSize']);
 		update_option('isCropped',   $_POST['isCropped']);
 		update_option('maxSize',     $_POST['maxSize']);
+		
 		update_option('tagFirst',    str_replace('\"','"',$_POST['tagFirst']));
 		update_option('tagBegin',    str_replace('\"','"',$_POST['tagBegin']));
 		update_option('tagEnd',      str_replace('\"','"',$_POST['tagEnd']));
