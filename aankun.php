@@ -28,7 +28,7 @@ function myOptionPage() {
 $cacheL = dirname(__FILE__) . '/cache';
 
 include_once('justFunction.php');
-
+	
 	extract(shortcode_atts(array('usrname' => '', 'album' => '', 'thumb' => '', 'maxsize' => '', 'lbox' => '', 'tagop' => '', 'edtag' => '', 'op' => '', 'ed' => '',), $atts));
 	
 	if($usrname=='') {$usrname=get_option('usrName');}
@@ -40,13 +40,25 @@ include_once('justFunction.php');
 	if($edtag=='')   {$edtag=get_option('tagLast');}
 	if($op=='')      {$op=get_option('tagBegin');}
 	if($ed=='')      {$ed=get_option('tagEnd');}
+	
 
 function myPicasa($atts){
 	global $cacheL;
-
-	if($lbox=='1'){	$lightbox = true; }else if($lbox=='0'){ $lightbox = false;}
 	
-	echo getAlbumContent($usrname,$album,$thumb,$maxsize,$tagop,$edtag,$op,$ed,$lightbox,$cacheL);
+	extract(shortcode_atts(array('usrname' => '', 'album' => '', 'thumb' => '', 'maxsize' => '', 'lbox' => '', 'tagop' => '', 'edtag' => '', 'op' => '', 'ed' => '',), $atts));
+	
+	if($usrname=='') {$usrname=get_option('usrName');}
+	if($thumb=='')   {$thumb=get_option('thumbSize');}
+	if($isCroped==''){$isCroped=get_option('isCropped');}
+	if($maxsize=='') {$maxsize=get_option('maxSize');}
+	if($lbox=='')    {$lbox=get_option('useLightbox');}
+	if($tagop=='')   {$tagop=get_option('tagFirst');}
+	if($edtag=='')   {$edtag=get_option('tagLast');}
+	if($op=='')      {$op=get_option('tagBegin');}
+	if($ed=='')      {$ed=get_option('tagEnd');}
+	
+	if($lbox=='1'){	$lightbox = true; }else if($lbox=='0'){ $lightbox = false;}
+	echo getAlbumContent($usrname,$album,$thumb,$maxsize,$tagop,$edtag,$op,$ed,$lightbox,$cacheL,$isCroped);
 }
 
 if (!is_admin()) {	
@@ -69,6 +81,6 @@ function my_add_media_button(){
 	$iFrameAdd = "$pluginURI/viewer.php?yourUrl=$pluginURI&siteUrl=$siteUrl";
 	$addParam  = "&usrname=$usrname&thumb=$thumb&maxsize=$maxsize&lbox=$lbox&isCroped=$isCroped&theTags=$theTags";
 
-	echo "<a href=\"#\"  onclick=\"tb_show('myPicasawebAlbum', '$iFrameAdd$addParam', false)\" >Pic</a>";
+	echo "<a href=\"#\"  onclick=\"tb_show('myPicasawebAlbum', '$iFrameAdd$addParam', false)\" >Pic.</a>";
 }
 ?>
