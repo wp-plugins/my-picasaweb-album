@@ -64,5 +64,3 @@ use 1 if you use lightbox and use 0 of you don want to.
 - Added more thumbnail size and cropping on option page
 - Simplepie cache now enable
 - For those who understand HTML now you can modify before and after tag on option page.
-
-**1.0** - First Release
