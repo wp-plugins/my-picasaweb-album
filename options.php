@@ -1,5 +1,5 @@
 <?php
-	$location = $options_page;
+	$location = $my_picasa_options_page;
 	
 	if ('process' == $_POST['stage']) {
 		update_option('usrName',     $_POST['usrName']);
@@ -82,35 +82,8 @@
                     <small><?php _e(' The maximum size of target image', 'myPicasawebAlbum') ?></small> 
                 </td>
             </tr>
-            <tr valign="baseline">
-                <th scope="row"><?php _e('Opening Tag', 'myPicasawebAlbum') ?></th> 
-                <td>
-                	<?php $tagFirst = get_option('tagFirst'); ?>
-					<textarea name="tagFirst" style="width:60%;" rows="3"><?php _e(str_replace('\"','&quot;',$tagFirst)); ?></textarea>
-                </td>
-            </tr>
-            <tr valign="baseline">
-                <th scope="row"><?php _e('Before Tag', 'myPicasawebAlbum') ?></th> 
-                <td>
-                	<?php $tagBegin = get_option('tagBegin'); ?>
-					<textarea name="tagBegin" style="width:60%;" rows="3"><?php _e(str_replace('\"','&quot;',$tagBegin)); ?></textarea>
-                </td>
-            </tr>
-            <tr valign="baseline">
-                <th scope="row"><?php _e('After Tag', 'myPicasawebAlbum') ?></th> 
-                <td>
-                	<?php $tagEnd = get_option('tagEnd'); ?>
-					<textarea name="tagEnd" style="width:60%;" rows="3"><?php _e(str_replace('\"','&quot;',$tagEnd)); ?></textarea>
-                </td>
-            </tr>
-            <tr valign="baseline">
-                <th scope="row"><?php _e('Ending Tag', 'myPicasawebAlbum') ?></th> 
-                <td>
-                	<?php $tagLast = get_option('tagLast'); ?>
-					<textarea name="tagLast" style="width:60%;" rows="3"><?php _e(str_replace('\"','&quot;',$tagLast)); ?></textarea>
-                    <p><small><?php _e("don't change if you don't know what to write here", 'myPicasawebAlbum') ?></small></p> 
-                </td>
-            </tr>
+
+
             <tr valign="baseline">
                 <th scope="row">
                 <p class="submit">
