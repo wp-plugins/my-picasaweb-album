@@ -13,13 +13,13 @@ add_option('useLightbox', '0');
 add_option('thumbSize'  , '144');
 add_option('isCropped'  , true);
 add_option('maxSize'    , '640');
-add_option('tagFirst'   , '<ul class="myPicasawebAlbum">');
-add_option('tagLast'    , '</ul>');
-add_option('tagBegin'   , '<li>');
-add_option('tagEnd'     , '</li>');
+add_option('tagFirst'   , '');
+add_option('tagLast'    , '');
+add_option('tagBegin'   , '');
+add_option('tagEnd'     , '');
 
 $pluginURI = get_option('siteurl').'/wp-content/plugins/'.dirname(plugin_basename(__FILE__));
-$options_page = get_option('siteurl') . '/wp-admin/options-general.php?page=my-picasaweb-album/options.php';
+$my_picasa_options_page = get_option('siteurl') . '/wp-admin/options-general.php?page=my-picasaweb-album/options.php';
 
 function myOptionPage() {
 	add_options_page('my Picasaweb Album Options', 'my Picasaweb Album', 10, 'my-picasaweb-album/options.php');
