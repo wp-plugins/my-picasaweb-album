@@ -53,6 +53,7 @@ use 1 if you use lightbox and use 0 of you don want to.
 **2.0** - Major Update
 - add media button above the post editor (no need to type the code on you post).
 - you can select the foto you want to add to you post.
+- fixed : conflict with lightbox 2 plugin
 
 
 **1.3** - Bug Fix
