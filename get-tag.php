@@ -41,12 +41,6 @@
             </div>
         </div>
 <?php } ?>
-<?php
-	echo "Memory usage: " . number_format(memory_get_usage()); 
-	echo "Memory usage: " . number_format(memory_get_usage()); 
-	echo "Memory usage: " . number_format(memory_get_usage()); 
-	echo "Memory usage: " . number_format(memory_get_usage()); 
-?>
 	
     <div class="addButton"><a href="#" onclick="addSelectedToPost()"> add to post </a></div>
     </div>

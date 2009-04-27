@@ -79,10 +79,6 @@ body{ height:100%; }
 		if($oddEven=='odd'){$oddEven='even';}else{$oddEven='odd';}
 		$ii++;
 	}
-	echo "Memory usage: " . number_format(memory_get_usage()); 
-	echo "Memory usage: " . number_format(memory_get_usage()); 
-	echo "Memory usage: " . number_format(memory_get_usage()); 
-	echo "Memory usage: " . number_format(memory_get_usage()); 
 ?>
 </div>
 <div style="display:none;">
