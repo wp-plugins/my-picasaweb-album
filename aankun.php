@@ -3,7 +3,7 @@
 Plugin Name: my Picasaweb Album
 Plugin URI: http://aan.dudut.com/
 Description: my very first wordpress plugin for adding the content of your Picasaweb Album to your posts. this plugin use simplePie (already included)
-Version: 2.0
+Version: 2.0.1
 Author: aankun
 Author URI: http://aan.dudut.com/
 */
@@ -81,6 +81,6 @@ function my_add_media_button(){
 	$iFrameAdd = "$pluginURI/viewer.php?yourUrl=$pluginURI&siteUrl=$siteUrl";
 	$addParam  = "&usrname=$usrname&thumb=$thumb&maxsize=$maxsize&lbox=$lbox&isCroped=$isCroped&theTags=$theTags";
 
-	echo "<a href=\"#\"  onclick=\"tb_show('myPicasawebAlbum', '$iFrameAdd$addParam', false)\" >Pic.</a>";
+	echo "<a href=\"#\"  onclick=\"tb_show('myPicasawebAlbum', '$iFrameAdd$addParam', false)\" ><img src=\"$pluginURI/thaIco.jpg\" /></a>";
 }
 ?>

@@ -3,7 +3,7 @@ Contributors: Andi Darmika
 Tags: picasaweb, picasa, photo, photos
 Requires at least: unknow
 Tested up to: 2.7.1
-Stable tag: 2.0
+Stable tag: 2.0.1
 
 == Description ==
 
@@ -49,6 +49,8 @@ the target image size ( 800, 720, 640, 576, 512, 400, 320, 288 or 200)
 use 1 if you use lightbox and use 0 of you don want to.
 
 == Version history ==
+**2.0.1** - Minor Update
+- change the icon for media button ^_^
 
 **2.0** - Major Update
 - add media button above the post editor (no need to type the code on you post).
