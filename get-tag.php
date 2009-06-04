@@ -8,13 +8,30 @@
 	$maxsize   = $_GET['maxsize'];
 	$lbox      = $_GET['lbox'];
 	$isCroped  = $_GET['isCroped'];
-	$theTags   = $_GET['theTags'];
-	$cacheL = dirname(__FILE__) . '/cache';
+	$tagSel    = $_GET['tagSel'];
+	$cacheL    = '';
 	
 	if($isCroped==1){$isCroped=true;}else{$isCroped=false;}
 	$albumImg = listAlbumContent($usrname,$album,$cacheL);
 	
 	$nImg = count($albumImg);
+	
+	if($tagSel=='none'){
+		$myTag[0] = '';
+		$myTag[1] = '';
+		$myTag[2] = '';
+		$myTag[3] = '';		
+	}else if($tagSel=='div'){
+		$myTag[0] = '<div class="myPicasawebAlbum">';
+		$myTag[1] = '</div>';
+		$myTag[2] = '<div class="wrapper">';
+		$myTag[3] = '</div>';	
+	}else if($tagSel=='ulli'){
+		$myTag[0] = '<ul class="myPicasawebAlbum">';
+		$myTag[1] = '</ul>';
+		$myTag[2] = '<li>';
+		$myTag[3] = '</li>';	
+	}
 ?>
 <div id="rmvArea">
 	<div id="picasaImgCont">
@@ -41,7 +58,10 @@
             </div>
         </div>
 <?php } ?>
-	
+	<input type="hidden" id="myPicasawebAlbumTagBegin"  value='<?php echo $myTag[0]; ?>' />
+    <input type="hidden" id="myPicasawebAlbumTagEnd"    value='<?php echo $myTag[1]; ?>' />
+    <input type="hidden" id="myPicasawebAlbumTagBefore" value='<?php echo $myTag[2]; ?>' />
+    <input type="hidden" id="myPicasawebAlbumTagAfter"  value='<?php echo $myTag[3]; ?>' />
     <div class="addButton"><a href="#" onclick="addSelectedToPost()"> add to post </a></div>
     </div>
     <div id="clearAll" ></div>

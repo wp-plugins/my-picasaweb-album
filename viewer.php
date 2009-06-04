@@ -9,10 +9,11 @@ $thumb     = $_GET['thumb'];
 $maxsize   = $_GET['maxsize'];
 $lbox      = $_GET['lbox'];
 $isCroped  = $_GET['isCroped'];
+$tagSel    = $_GET['tagSel'];
 
-$cacheL = dirname(__FILE__) . '/cache';
+$cacheL = '';
 
-$addParam = "thisUrl=$thisUrl&usrname=$usrname&thumb=$thumb&maxsize=$maxsize&lbox=$lbox&isCroped=$isCroped";
+$addParam = "thisUrl=$thisUrl&usrname=$usrname&thumb=$thumb&maxsize=$maxsize&lbox=$lbox&isCroped=$isCroped&tagSel=$tagSel";
 
 
 ?>
@@ -53,7 +54,6 @@ body{ height:100%; }
 	#TB_window .addButton a { color:#fff; text-decoration:none; float:right; padding:2px 10px 5px 10px; background:#555; }
 	#TB_window .addButton a:hover { background:#333; }
 
-.jksbd { display: }
 -->
 </style>
 
@@ -177,9 +177,9 @@ body{ height:100%; }
 			tag='';
 			for(ii=1;ii<=imgSeq;ii++){
 				jj  =  nng[ii];
-				tag = tag + (jQuery('#the-tag-'+jj).attr('value'));
+				tag = tag + (jQuery('#myPicasawebAlbumTagBefore').attr('value')) + (jQuery('#the-tag-'+jj).attr('value')) + (jQuery('#myPicasawebAlbumTagAfter').attr('value'));
 			}
-			sendToEditor(tag);
+			sendToEditor((jQuery('#myPicasawebAlbumTagBegin').attr('value')) + tag + (jQuery('#myPicasawebAlbumTagEnd').attr('value')));
 		}
 	}
 	

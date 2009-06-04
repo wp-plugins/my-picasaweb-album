@@ -1,5 +1,6 @@
 <?php
 	$location = $my_picasa_options_page;
+	$pluginURI = get_option('siteurl').'/wp-content/plugins/'.dirname(plugin_basename(__FILE__));
 	
 	if ('process' == $_POST['stage']) {
 		update_option('usrName',     $_POST['usrName']);
@@ -7,11 +8,8 @@
 		update_option('thumbSize',   $_POST['thumbSize']);
 		update_option('isCropped',   $_POST['isCropped']);
 		update_option('maxSize',     $_POST['maxSize']);
-		
-		update_option('tagFirst',    str_replace('\"','"',$_POST['tagFirst']));
-		update_option('tagBegin',    str_replace('\"','"',$_POST['tagBegin']));
-		update_option('tagEnd',      str_replace('\"','"',$_POST['tagEnd']));
-		update_option('tagLast',     str_replace('\"','"',$_POST['tagLast']));
+		update_option('tagSel',      $_POST['tagSel']);
+	
 	}
 ?>
 <div class="wrap">
@@ -82,7 +80,29 @@
                     <small><?php _e(' The maximum size of target image', 'myPicasawebAlbum') ?></small> 
                 </td>
             </tr>
-
+			<tr valign="baseline">
+                <th scope="row"><?php _e('Image Wrapper Tags', 'myPicasawebAlbum') ?></th> 
+              <td>
+              	<?php $tagSel=get_option('tagSel'); ?>
+              	<fieldset>
+                	<label title="div">
+                        <input type="radio" <?php if($tagSel=='div'){ _e('checked="checked"');} ?> value="div" name="tagSel"/>
+                        <img style="vertical-align:middle;" src="<?php echo $pluginURI; ?>/div-wrapper.png" />
+                    </label>
+                    <br/><br/>
+                    <label title="div">
+                        <input type="radio" <?php if($tagSel=='ulli'){ _e('checked="checked"');} ?> value="ulli" name="tagSel"/>
+                        <img style="vertical-align:middle;" src="<?php echo $pluginURI; ?>/ul-li-wrapper.png" />
+                    </label>
+                    <br/><br/>
+                    <label title="div">
+                        <input type="radio" <?php if($tagSel=='none'){ _e('checked="checked"');} ?> value="none" name="tagSel"/>
+                        none
+                    </label>
+                    <br/>
+                </fieldset>  	
+              </td>
+            </tr>
 
             <tr valign="baseline">
                 <th scope="row">

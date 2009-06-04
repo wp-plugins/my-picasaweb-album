@@ -1,39 +1,24 @@
 <?php
-if (!class_exists('SimplePie')){
-	include_once('inc/create.php');
-	include_once('inc/idn/idna_convert.class.php');
-}
 
 function getAlbumContent($usrname,$albumName,$tb,$maxSize,$conO,$conE,$op,$ed,$lBox,$cLoc,$isCroped){	
 	$result = findAlbum($usrname,$albumName,$cLoc);
 	if($result !== 0){
 		$url = str_replace('/entry/','/feed/',$result);
-		$feed = new SimplePie();
-		$feed->set_feed_url($url);
-		$feed->set_cache_location($cLoc);
-		$feed->enable_order_by_date(false);
-		$feed->init();
-		$feed->handle_content_type();
-		
+		$feed = getXml($url);
+
 		$lTag = '';
 		if($lBox) { $lTag = ' rel="lightbox[' . $albumName . ']" ';}
 		
 		$whole = $conO;
-		foreach ($feed->get_items() as $item) {
-			$media_group   = $item->get_item_tags('http://search.yahoo.com/mrss/', 'group');
-			
-			$media_content = $media_group[0]['child']['http://search.yahoo.com/mrss/']['content'];
-			$imgUrl = $media_content[0]['attribs']['']['url'];
+		foreach ($feed->entry as $item) {
+			$imgUrl = $item->media_group->media_content[url];
 			$tbUrl  = getTheUrl($imgUrl,$tb,$isCroped);
 			
 			$whole = $whole . $op . '<a href="' . $imgUrl . "?imgmax=" . $maxSize . '"' . $lTag . '><img src="' . $tbUrl . '" /></a>' . $ed;	
 		}
 		$whole = $whole . $conE;
 		return $whole;
-		
-		$feed->__destruct();
-		unset($feed);
-		unset($item); 
+
 	}else{
 		echo 'album not found or username wrong';
 	}
@@ -43,19 +28,12 @@ function listAlbumContent($usrname,$albumName,$cLoc){
 	$result = findAlbum($usrname,$albumName,$cLoc);
 	if($result !== 0){
 		$url = str_replace('/entry/','/feed/',$result);
-		$feed = new SimplePie();
-		$feed->set_feed_url($url);
-		$feed->set_cache_location($cLoc);
-		$feed->enable_order_by_date(false);
-		$feed->init();
-		$feed->handle_content_type();
+		$feed = getXml($url);
 		
 		$imgs = '';
 		$ii = 0;
-		foreach ($feed->get_items() as $item){
-			$media_group   = $item->get_item_tags('http://search.yahoo.com/mrss/', 'group');
-			$media_content = $media_group[0]['child']['http://search.yahoo.com/mrss/']['content'];
-			$imgUrl = $media_content[0]['attribs']['']['url'];
+		foreach ($feed->entry as $item){
+			$imgUrl = $item->media_group->media_content[url];
 			
 			$imgs[$ii][] = $ii+1;
 			$imgs[$ii][] = $imgUrl;
@@ -63,26 +41,21 @@ function listAlbumContent($usrname,$albumName,$cLoc){
 			$ii++;
 		}
 		return $imgs;
-		$feed->__destruct();
-		unset($feed); 
-		unset($item); 
 	}
 }
 
 function findAlbum($usrname,$albumName,$cLoc){
 	$url = 'http://picasaweb.google.com/data/feed/api/user/' . $usrname;
-	$feed = new SimplePie();
-	$feed->set_feed_url($url);
-	$feed->set_cache_location($cLoc);
-	$feed->enable_order_by_date(false);
-	$feed->init();
-	$feed->handle_content_type();
+	$feed = getXml($url);
 	$found  = 0;
 	$result = 0;
 	
-	foreach ($feed->get_items() as $item) {
-		$nUrl  = $item->get_id(false);
-		$title = $item->get_title();
+	$album = '';
+	$ii    = 0;
+	
+	foreach ($feed->entry as $item) {
+		$nUrl  = $item->id;
+		$title = $item->title;
 		
 		if(strtoupper($title)==strtoupper($albumName)){
 			$found = 1;
@@ -91,54 +64,37 @@ function findAlbum($usrname,$albumName,$cLoc){
 	}
 	
 	return $result;
-	$feed->__destruct();
-	unset($feed);
-	unset($item); 
 }
 
 function listAlbum($usrname,$cLoc){
 	$url = 'http://picasaweb.google.com/data/feed/api/user/' . $usrname;
-	$feed = new SimplePie();
-	$feed->set_feed_url($url);
-	$feed->set_cache_location($cLoc);
-	$feed->enable_order_by_date(false);
-	$feed->init();
-	$feed->handle_content_type();
+	$feed = getXml($url);
 	$found  = 0;
 	$result = 0;
 	
 	$album = '';
 	$ii    = 0;
-	foreach ($feed->get_items() as $item) {
-		$media_group   = $item->get_item_tags('http://search.yahoo.com/mrss/', 'group');
-		$media_content = $media_group[0]['child']['http://search.yahoo.com/mrss/']['content'];
-		$imgUrl = $media_content[0]['attribs']['']['url'];
+	
+	foreach ($feed->entry as $item) {		
+		$imgUrl = $item->media_group->media_content[url];
+		$loc    = trim($item->gphoto_location);
+		$num    = trim($item->gphoto_numphotos);
 		
-		$loc = $item->get_item_tags('http://schemas.google.com/photos/2007', 'location');
-		$num = $item->get_item_tags('http://schemas.google.com/photos/2007', 'numphotos');
-		
-		$album[$ii][0] = $item->get_id(false);
-		$album[$ii][1] = $item->get_title();
+		$album[$ii][0] = $item->id;
+		$album[$ii][1] = $item->title;
 		$album[$ii][2] = $imgUrl;
 		
-		$thaDate = $item->get_date();
+		$thaDate = explode('T',$item->updated);
 		
+		if(!empty($loc)){$location=' | location : ' .$loc;}
+		if(!empty($num)){$fNumber=' | ' . $num . ' photos';}
 		
-		$jj = 0;
-		foreach($num[0] as $tmp){ if($jj==o){ $fNumber = ' | ' . $tmp . ' photos';} $jj++; }
-		$jj = 0;
-		foreach($loc[0] as $tmp){ if($jj==o and !empty($tmp)){ $location = ' | location : ' . $tmp;} $jj++; }
-		
-		$album[$ii][3] = $thaDate . $location . $fNumber ;
+		$album[$ii][3] = $thaDate[0] . $location . $fNumber ;
 		$location ='';
 		
 		$ii++;
 	}
-	
 	return $album;
-	$feed->__destruct();
-	unset($feed);
-	unset($item); 
 }
 
 
@@ -159,4 +115,30 @@ function getTheUrl($url,$size,$cropped){
 	
 	return $nUrl;
 }
+
+function getXml($url) {
+	$ch = curl_init();
+		curl_setopt ($ch, CURLOPT_URL, $url);
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+		$content = curl_exec($ch);
+	curl_close($ch);
+	
+		if ($content) {
+		if (function_exists('simplexml_load_file')) {
+			$content = str_replace('media:group'     ,'media_group',$content);
+			$content = str_replace('media:content'   ,'media_content',$content); 
+			$content = str_replace('media:title'     ,'media_title',$content);
+			$content = str_replace('gphoto:location' ,'gphoto_location',$content);
+			$content = str_replace('gphoto:numphotos','gphoto_numphotos',$content);
+			
+			$xml = new SimpleXMLElement($content);
+			return $xml;
+		} else {
+			$error = true;
+	}
+	} else {
+		$error = true;
+	}
+}
+
 ?>
