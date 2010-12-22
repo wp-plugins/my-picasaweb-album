@@ -47,6 +47,7 @@ the target image size ( 800, 720, 640, 576, 512, 400, 320, 288 or 200)
 use 1 if you use lightbox and use 0 of you don want to.
 
 == Version history ==
+
 **2.0.3** - Minor Update
 - add loading animation on loading album content
 - add image caption from picasa to link title and album thumbnail on album content
