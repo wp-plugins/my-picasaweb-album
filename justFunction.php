@@ -37,6 +37,7 @@ function listAlbumContent($usrname,$albumName,$cLoc){
 			
 			$imgs[$ii][] = $ii+1;
 			$imgs[$ii][] = $imgUrl;
+			$imgs[$ii][] = trim($item->summary);
 			
 			$ii++;
 		}

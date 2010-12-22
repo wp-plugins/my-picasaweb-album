@@ -1,9 +1,9 @@
 <?php
 /*
 Plugin Name: my Picasaweb Album
-Plugin URI: http://www.aankun.com/
+Plugin URI: http://www.aankun.com/my-picasaweb-album/
 Description: my very first wordpress plugin for adding the content of your Picasaweb Album to your posts.
-Version: 2.0.2
+Version: 2.0.3
 Author: aankun
 Author URI: http://www.aankun.com/
 */

@@ -49,13 +49,19 @@
 	$lAdd = '';
 	if($lbox==1){ $lAdd=' rel="lightbox[' . $album . ']" '; }
 	
-	$wTag = '<a href="' . $tgUrl . '"' . $lAdd . '><img src="' . $tbUrl . '" alt="' . $album . '" /></a>';
+	$wTag = '<a title="'.$temp[2].'" href="' . $tgUrl . '"' . $lAdd . '><img src="' . $tbUrl . '" alt="' . $album . '" /></a>';
 ?>     
-        <div class="albumContent" id="imgcont-<?php echo $temp[0]; ?>" onclick="selctImage('<?php echo $temp[0]; ?>')">
+        <div class="albumContent" id="imgcont-<?php echo $temp[0]; ?>" onclick="selctImage('<?php echo $temp[0]; ?>')" style="position:relative;">
         	<div class="thaImg" style="background-image:url(<?php echo getTheUrl($temp[1],$vTb,true); ?>); width:<?php echo $vTb ?>px; height:<?php echo $vTb ?>px;" >
             	<input type="hidden" id="the-tag-<?php echo $temp[0]; ?>" value='<?php echo $wTag; ?>' />
                 <div class="thaBg" ></div>
             </div>
+            
+            <?php if(!empty($temp[2])){ ?>
+        	<div style="background:#000; position:absolute; left:3px; bottom:3px; color:#fff; text-align:center; font-size:10px; line-height:1em; padding:3px 0 4px; width:<?php echo $vTb ?>px;" class="trans" >
+            	<?php echo $temp[2]; ?>
+            </div>
+            <?php } ?>
         </div>
 <?php } ?>
 	<input type="hidden" id="myPicasawebAlbumTagBegin"  value='<?php echo $myTag[0]; ?>' />

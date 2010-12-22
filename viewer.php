@@ -37,7 +37,7 @@ body{ height:100%; }
 	#picasaAlbumList li a span { font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-size:16px; margin-left:5px; font-weight:bold; line-height:0.95em; }
 	#picasaAlbumList li a small { margin-left:5px; font-size:9px; display:block; color:#999; }
 	
-#rmvArea { border-left:1px solid #eee; border-bottom:4px solid #eee; border-right:1px solid #eee; padding:5px 5px 5px 5px; }
+#rmvArea { border-left:1px solid #eee; border-bottom:4px solid #eee; border-right:1px solid #eee; padding:1px; }
 
 #picasaImgCont { float:left; margin-top:3px; width:100%; }
 .albumContent { float:left; padding:3px; margin:0px 2px 5px 2px; }
@@ -68,8 +68,11 @@ body{ height:100%; }
 	foreach($album as $temp){
 ?>
         <li class="<?php echo $oddEven; ?>" >
-            <a href="#" onclick="mekimeki('#theFrame-<?php echo $ii; ?>','<?php echo $temp[1]; ?>')">
-            <div class="albumTb"><img src="<?php echo getTheUrl($temp[2],'32',true); ?>"/></div>
+            <a class="albumLink-<?php echo $ii; ?>" href="#" onclick="mekimeki('#theFrame-<?php echo $ii; ?>', '<?php echo $temp[1]; ?>', '.albumLink-<?php echo $ii; ?>')">
+            <div class="albumTb" style="position:relative;">
+            	<img src="<?php echo getTheUrl($temp[2],'32',true); ?>" />
+            	<img src="<?php echo $thisUrl; ?>/ajax-loader.gif" class="loaderImg" style="position:absolute; left:-20px; top:8px; display:none;" />
+            </div>
             <span><?php echo $temp[1]; ?></span>
             <small><?php echo $temp[3]; ?></small>
             </a>
@@ -98,19 +101,23 @@ body{ height:100%; }
 		jQuery("#newContent").remove();
 	}
 	
-	function mekimeki(target,album){
+	function mekimeki(target, album, linkAncor){
 		var target;
 		var album;
+		var linkAncor;
 		
 		if(activeDiv==target){
 			removeDiv(activeDiv);
 			activeDiv = '';
 			imgSeq = 0;
 		}else{
+			jQuery(linkAncor).find('.loaderImg').css('display','block');
 			if(removeDiv!=''){removeDiv(activeDiv);}
 			
 			jQuery.post("<?php echo $thisUrl; ?>/get-tag.php?<?php echo $addParam; ?>&album="+album, function(data){
 				jQuery(target).append('<div id="newContent">' + data + '</div>');
+				jQuery('.albumContent .trans').css('opacity',0.7);
+				jQuery(linkAncor).find('.loaderImg').css('display','none');
 			});				
 			activeDiv = target;
 		}
@@ -185,7 +192,7 @@ body{ height:100%; }
 	
 	jQuery('#TB_ajaxContent').css({width:"auto"});	
 	jQuery(document).ready(function(){   
-		hh1 = jQuery("#TB_overlay").height();
+		var hh1 = jQuery("#TB_overlay").height();
 		jQuery('#TB_ajaxContent').css({height:parseInt(hh1-90)+'px'});
 	});
 </script>

@@ -2,12 +2,12 @@
 Contributors: Andi Darmika
 Tags: picasaweb, picasa, photo, photos
 Requires at least: unknow
-Tested up to: 2.7.1
-Stable tag: 2.0.2
+Tested up to: 3.0.1
+Stable tag: 2.0.3
 
 == Description ==
 
-If you want to ask something about this plugin just visit <a href="http://www.aankun.com">http://www.aankun.com</a> and leave a comment
+If you want to ask something about this plugin just visit <a href="http://www.aankun.com/my-picasaweb-album/">the plugin page</a> and leave a comment
 
 Features :
 * Browse your album
@@ -47,6 +47,13 @@ the target image size ( 800, 720, 640, 576, 512, 400, 320, 288 or 200)
 use 1 if you use lightbox and use 0 of you don want to.
 
 == Version history ==
+**2.0.3** - Minor Update
+- add loading animation on loading album content
+- add image caption from picasa to link title and album thumbnail on album content
+  ( thanks to Rogger Dojh for the advice ^_^ )
+- fix some CSS
+
+
 **2.0.2** - Minor Update
 - no longer use simplepie ^_^
 
