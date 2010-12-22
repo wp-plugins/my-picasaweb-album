@@ -1,15 +1,14 @@
 <?php
 /*
 Plugin Name: my Picasaweb Album
-Plugin URI: http://aan.dudut.com/
-Description: my very first wordpress plugin for adding the content of your Picasaweb Album to your posts. this plugin use simplePie (already included)
+Plugin URI: http://www.aankun.com/
+Description: my very first wordpress plugin for adding the content of your Picasaweb Album to your posts.
 Version: 2.0.2
 Author: aankun
-Author URI: http://aan.dudut.com/
+Author URI: http://www.aankun.com/
 */
 
-add_option('usrName'    , 'andi.darmika');
-add_option('useLightbox', '0');
+add_option('usrName'    , 'aankun.ganteng');
 add_option('thumbSize'  , '144');
 add_option('isCropped'  , true);
 add_option('maxSize'    , '640');

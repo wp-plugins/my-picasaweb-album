@@ -7,9 +7,7 @@ Stable tag: 2.0.2
 
 == Description ==
 
-Used to insert spesific picasaweb album to your post. You can also use Lightbox to display images (Require separated plugin). This plugin use Simplepie from http://simplepie.org/.
-
-If you want to ask something about this plugin just visit <a href="http://aan.dudut.com">http://aan.dudut.com</a> and leave a comment
+If you want to ask something about this plugin just visit <a href="http://www.aankun.com">http://www.aankun.com</a> and leave a comment
 
 Features :
 * Browse your album
@@ -26,7 +24,7 @@ Just like the other plugin. Put the extracted files to your plugin directory an 
 == Frequently Asked Questions ==
 
 Do you have any question?
-just mail me at aan@dudut.com or aan@divdsgn.com
+just mail me at me@aankun.com
 
 == Usage ==
 
