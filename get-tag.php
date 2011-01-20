@@ -53,10 +53,12 @@
 	if($lbox==1){ $lAdd=' rel="lightbox[' . $album . ']" '; }
 	
 	$wTag = '<a title="'.$temp[2].'" href="' . $tgUrl . '"' . $lAdd . '><img src="' . $tbUrl . '" alt="' . $album . '" /></a>';
+	$oTag = '<img alt="'.$temp[2].'" src="'.$temp[1].'" />';
 ?>     
         <div class="albumContent" id="imgcont-<?php echo $temp[0]; ?>" onclick="selctImage('<?php echo $temp[0]; ?>')" style="position:relative;">
         	<div class="thaImg" style="background-image:url(<?php echo getTheUrl($temp[1],$vTb,true); ?>); width:<?php echo $vTb ?>px; height:<?php echo $vTb ?>px;" >
             	<input type="hidden" id="the-tag-<?php echo $temp[0]; ?>" value='<?php echo $wTag; ?>' />
+                <input type="hidden" id="the-other-tag-<?php echo $temp[0]; ?>" value='<?php echo $oTag;?>' />
                 <div class="thaBg" ></div>
             </div>
             
@@ -71,7 +73,14 @@
     <input type="hidden" id="myPicasawebAlbumTagEnd"    value='<?php echo $myTag[1]; ?>' />
     <input type="hidden" id="myPicasawebAlbumTagBefore" value='<?php echo $myTag[2]; ?>' />
     <input type="hidden" id="myPicasawebAlbumTagAfter"  value='<?php echo $myTag[3]; ?>' />
-    <div class="addButton"><a href="#" onclick="addSelectedToPost()"> add to post </a></div>
+    <div class="addButton">
+    	<div style="float:left; font-size:10px; margin:2px 0 0 5px;">
+        	<input type="checkbox" name="insertFullSize" /> insert image only (full size)
+        </div>
+        
+    	<a href="#" onclick="addSelectedToPost()"> add to post </a>
+    </div>
+    
     </div>
     <div id="clearAll" ></div>
 </div>
