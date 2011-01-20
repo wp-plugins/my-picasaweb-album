@@ -48,8 +48,9 @@ use 1 if you use lightbox and use 0 of you don want to.
 
 == Version history ==
 
-**2.0.4** - Bug Fix
+**2.0.4** - Bug Fix and added some stuff
 - can't display album content when album name contain '&' character (thanks to Lukas Pokorny)
+- added checkbox for inserting full size image only without link wrapper (request by Juné Joubert).
 
 
 **2.0.3** - Minor Update

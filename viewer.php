@@ -178,17 +178,25 @@ body{ height:100%; }
 	}
 	
 	function addSelectedToPost(){
-		var tag;
+		var tag  = '';
+		var oTag = '';
+		var insertFormat = jQuery('[name=insertFullSize]').attr('checked');
 		
 		if(imgSeq==0){
 			alert('please select the images you want to put on your post');
 		}else{
 			tag='';
 			for(ii=1;ii<=imgSeq;ii++){
-				jj  =  nng[ii];
-				tag = tag + (jQuery('#myPicasawebAlbumTagBefore').attr('value')) + (jQuery('#the-tag-'+jj).attr('value')) + (jQuery('#myPicasawebAlbumTagAfter').attr('value'));
+				jj   =  nng[ii];
+				tag  = tag + (jQuery('#myPicasawebAlbumTagBefore').attr('value')) + (jQuery('#the-tag-'+jj).attr('value')) + (jQuery('#myPicasawebAlbumTagAfter').attr('value'));
+				oTag = oTag + jQuery('#the-other-tag-'+jj).val();
 			}
-			sendToEditor((jQuery('#myPicasawebAlbumTagBegin').attr('value')) + tag + (jQuery('#myPicasawebAlbumTagEnd').attr('value')));
+			
+			if(insertFormat){
+				sendToEditor( oTag );
+			}else{
+				sendToEditor((jQuery('#myPicasawebAlbumTagBegin').attr('value')) + tag + (jQuery('#myPicasawebAlbumTagEnd').attr('value')));
+			}
 		}
 	}
 	
