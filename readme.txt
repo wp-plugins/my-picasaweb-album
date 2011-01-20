@@ -15,7 +15,7 @@ Features :
 * Lightbox support (see requirements)
 
 Requirements:
-* you neet lightbox 2 plugin is you want to activate the lightbox option
+* you need lightbox 2 plugin is you want to activate the lightbox option
 
 == Installation ==
 
