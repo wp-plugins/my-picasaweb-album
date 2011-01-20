@@ -114,7 +114,9 @@ body{ height:100%; }
 			jQuery(linkAncor).find('.loaderImg').css('display','block');
 			if(removeDiv!=''){removeDiv(activeDiv);}
 			
-			jQuery.post("<?php echo $thisUrl; ?>/get-tag.php?<?php echo $addParam; ?>&album="+album, function(data){
+			jQuery.post("<?php echo $thisUrl; ?>/get-tag.php?<?php echo $addParam; ?>&album="+album, {
+				albumName : album
+			}, function(data){
 				jQuery(target).append('<div id="newContent">' + data + '</div>');
 				jQuery('.albumContent .trans').css('opacity',0.7);
 				jQuery(linkAncor).find('.loaderImg').css('display','none');

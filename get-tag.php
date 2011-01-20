@@ -3,7 +3,10 @@
 	include_once('justFunction.php');
 	
 	$usrname   = $_GET['usrname'];
+	
 	$album     = $_GET['album'];
+	$album     = $_POST['albumName'];
+	
 	$thumb     = $_GET['thumb'];
 	$maxsize   = $_GET['maxsize'];
 	$lbox      = $_GET['lbox'];

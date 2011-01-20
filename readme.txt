@@ -3,7 +3,7 @@ Contributors: Andi Darmika
 Tags: picasaweb, picasa, photo, photos
 Requires at least: unknow
 Tested up to: 3.0.1
-Stable tag: 2.0.3
+Stable tag: 2.0.4
 
 == Description ==
 
@@ -47,6 +47,10 @@ the target image size ( 800, 720, 640, 576, 512, 400, 320, 288 or 200)
 use 1 if you use lightbox and use 0 of you don want to.
 
 == Version history ==
+
+**2.0.4** - Bug Fix
+- can't display album content when album name contain '&' character (thanks to Lukas Pokorny)
+
 
 **2.0.3** - Minor Update
 - add loading animation on loading album content
